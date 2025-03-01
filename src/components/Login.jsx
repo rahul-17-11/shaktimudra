@@ -40,7 +40,7 @@ export default function Login() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center text-gray-800">
-      <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
+      <div className="bg-white/35 p-8 rounded-2xl shadow-lg w-full max-w-md">
         <div className="flex items-center justify-center mb-6">
           <div className="h-12 w-12 bg-indigo-600 rounded-full flex items-center justify-center">
             <GiMeditation className="h-6 w-6 text-white" />
