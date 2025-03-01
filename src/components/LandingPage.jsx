@@ -145,7 +145,7 @@ const LandingPage = () => {
             </div>
             <div className="w-full h-full max-w-lg mx-auto overflow-hidden backdrop-blur-sm bg-white/10 p-2 rounded-2xl border border-white/30 shadow-2xl">
               <img 
-                src="yogamudra2.webp" 
+                src="yogamudra1.webp" 
                 alt="Woman in yoga pose with app overlay showing progress"
                 className="rounded-xl w-full h-auto object-cover" 
               />

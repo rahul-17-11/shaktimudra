@@ -66,7 +66,7 @@ const YogaPoseCard = ({ pose }) => {
       </div>
 
       {/* Extra Info */}
-      <div className="flex justify-between text-sm text-black-400 mt-4">
+      <div className="flex justify-between text-sm text-black-400 mt-4 text-black">
         <span>Level: <span className="text-black">{pose.level}</span></span>
         <span>Type: <span className="text-black">{pose.type}</span></span>
         <span>Quality: <span className="text-black">{pose.quality}</span></span>
