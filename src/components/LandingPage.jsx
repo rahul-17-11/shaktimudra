@@ -108,7 +108,7 @@ const LandingPage = () => {
       <div className="relative z-10 py-16 px-8 md:px-16 flex flex-col md:flex-row items-center">
         <div className="md:w-1/2 mb-12 md:mb-0">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-black drop-shadow-lg">
-            Transform Your <span className="text-green-500">Yoga Practice</span> Through Community Challenges
+            Transform Your <span className="text-amber-400">Yoga Practice</span> Through Community Challenges
           </h1>
           <p className="text-lg mb-8 text-black/80">
             Join thousands of yogis tracking their progress, competing with friends, and achieving wellness milestones together.
@@ -155,7 +155,7 @@ const LandingPage = () => {
       </div>
 
       {/* Features Section */}
-      <div id="features" className="relative z-10 py-16 px-8 md:px-16 backdrop-blur-md bg-white/10 border-y border-white/20">
+      <div id="features" className="relative z-10 py-16 px-8 md:px-16 backdrop-blur-mdborder-y border-white/20">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold mb-4 text-black drop-shadow-md">Gamify Your Wellness Journey</h2>
           <p className="text-black/80 max-w-2xl mx-auto">
@@ -191,7 +191,7 @@ const LandingPage = () => {
       </div>
 
       {/* Social Proof */}
-      <div id="community" className="relative z-10 py-16 px-8 md:px-16 backdrop-blur-md bg-white/5">
+      <div id="community" className="relative z-10 py-16 px-8 md:px-16">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold mb-4 text-black drop-shadow-md">Join Our Thriving Community</h2>
           <p className="text-black/80 max-w-2xl mx-auto">
@@ -260,7 +260,7 @@ const LandingPage = () => {
       </div>
 
       {/* Call to Action */}
-      <div className="relative z-10 py-16 px-8 md:px-16 text-center backdrop-blur-md bg-white/5">
+      <div className="relative z-10 py-16 px-8 md:px-16 text-center">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-black drop-shadow-md">Ready to Transform Your Yoga Practice?</h2>
           <p className="text-lg text-black/80 mb-8">
@@ -277,7 +277,7 @@ const LandingPage = () => {
       </div>
 
       {/* Footer */}
-      <footer className="relative z-10 backdrop-blur-md bg-black/30 text-black py-12 px-8 md:px-16 border-t border-white/10">
+      <footer className="relative z-10 backdrop-blur-md bg-black/15 text-black py-12 px-8 md:px-16 border-t border-white/10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
           <div>
             <h4 className="font-bold mb-4">ShaktiMudra</h4>
