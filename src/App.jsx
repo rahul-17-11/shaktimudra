@@ -5,6 +5,7 @@ import LandingPage from './components/LandingPage'
 import YogaAsanas from './components/YogaAsanas'
 import WaterRepelBackground from './components/WaterRepelBackground'
 import NotFound from './components/NotFound'
+import YogaList from './components/YogaList'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
       
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<WaterRepelBackground><Login /></WaterRepelBackground>} />
+      <Route path="/dashboard" element={<YogaList />} />
       <Route path="*" element={<NotFound />} />
       
     </Routes>
