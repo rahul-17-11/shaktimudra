@@ -131,13 +131,13 @@ const LandingPage = () => {
         </div>
         <div className="md:w-1/2">
           <div className="relative">
-            <div className="absolute -top-6 -left-6 backdrop-blur-md bg-white/20 rounded-lg p-4 shadow-lg border border-white/30">
+            <div className="absolute z-10 -top-6 -left-6 backdrop-blur-md bg-white/20 rounded-lg p-4 shadow-lg border border-white/30">
               <div className="flex items-center space-x-2">
                 <Flame className="h-5 w-5 text-orange-300" />
                 <span className="font-semibold text-black">7 Day Streak!</span>
               </div>
             </div>
-            <div className="absolute -bottom-6 -right-6 backdrop-blur-md bg-white/20 rounded-lg p-4 shadow-lg border border-white/30">
+            <div className="absolute z-10 -bottom-6 -right-6 backdrop-blur-md bg-white/20 rounded-lg p-4 shadow-lg border border-white/30">
               <div className="flex items-center space-x-2">
                 <Award className="h-5 w-5 text-green-800" />
                 <span className="font-semibold text-black">Level 5 Achieved</span>

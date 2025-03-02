@@ -49,7 +49,7 @@ export default function Register() {
       setLoading(true);
       const userCredential = await firebase.registerUser(
         userData.email,
-        userData.password
+        userData.password,
       );
 
       await firebase.putData(`users/${userCredential.user.uid}`, {

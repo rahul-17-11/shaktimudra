@@ -16,6 +16,7 @@ export function AuthProvider({children}) {
   useEffect(()=>{
     const login = onAuthStateChanged(firebaseAuth,(loggedUser)=>{
       setUser(loggedUser)
+      console.log(loggedUser)
     })
     return ()=>login()
   },[])

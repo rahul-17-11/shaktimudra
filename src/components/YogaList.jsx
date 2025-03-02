@@ -1,48 +1,47 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import YogaPoseCard from "./YogaPoseCard";
+import axios from "axios";
 
-const yogaPoses = [
-  {
-    englishName: "Wild Thing Pose",
-    sanskritName: "Camatkarasana",
-    description: "A dynamic backbend that opens the chest, stretches the hip flexors, and strengthens the shoulders.",
-    benefit: "Opens the chest, stretches the hip flexors and psoas, and strengthens the shoulders and upper back muscles.",
-    mainFocus: ["Chest Opening", "Hip Flexor Stretch", "Shoulder Strength", "Upper Back Activation"],
-    keys: [
-      "Bottom arm’s wrist and shoulder aligned",
-      "Feet pressing firmly",
-      "Engage buttock muscles",
-      "Hips pushing up",
-      "Extended arm reaching back toward the floor",
-      "Gaze toward the thumb"
-    ],
-    howToDo: [
-      "Start in Side Plank Pose with your weight on one hand.",
-      "Step your top foot back and lower your toes to the floor behind you.",
-      "Press into your supporting hand and lift your hips toward the ceiling.",
-      "Extend your free arm back and let your chest open."
-    ],
-    tip: "Keep your supporting arm strong and engaged to avoid strain on the wrist and shoulder.",
-    cautions: [
-      "Mind the lower back compression.",
-      "Avoid if you have ankle, wrist, elbow, shoulder, or neck injuries.",
-      "Not recommended for individuals with high or low blood pressure."
-    ],
-    level: "Intermediate",
-    type: "Back-Bend",
-    quality: "Energizing"
+const YogaList = ({toggleAsanas}) => {
+  const [yogaPoses, setYogaPoses] = useState([]);
+
+  async function fetchAsanas() {
+    try {
+      let res = await axios.get(
+        "https://shaktimudra-9aa9f-default-rtdb.asia-southeast1.firebasedatabase.app/yogaAsanas.json"
+      );
+      setYogaPoses(Object.entries(res.data || []));
+    } catch (error) {
+      console.log(error);
+    }
   }
-];
 
-const YogaList = () => {
+  useEffect(() => {
+    fetchAsanas();
+  }, []);
+
   return (
-    <>
-    <div className="flex flex-wrap justify-center gap-6 p-6">
-      {yogaPoses.map((pose, index) => (
+    <div className="min-h-screen p-6">
+      {/* Back Button */}
+      <button
+        onClick={toggleAsanas}
+        className="bg-amber-700 text-white px-4 py-2 rounded-lg shadow-md mb-4 hover:bg-amber-800 transition duration-200"
+      >
+        ← Back
+      </button>
+
+      {/* Heading */}
+      <h1 className="text-4xl font-bold text-center text-amber-700 mb-8">
+        Yoga Poses
+      </h1>
+
+      {/* Yoga Poses Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {yogaPoses.map((pose, index) => (
           <YogaPoseCard key={index} pose={pose} />
         ))}
+      </div>
     </div>
-    </>
   );
 };
 

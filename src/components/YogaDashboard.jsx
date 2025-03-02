@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Award, Calendar, TrendingUp, Star, Activity, Users, User, LogOut } from 'lucide-react';
 import { GiMeditation } from 'react-icons/gi';
 import { useAuth } from '../context/AuthProvider';
+import YogaList from './YogaList';
+import { useFirebase } from '../context/Firebase';
+import { Navigate } from 'react-router-dom';
 
 const YogaDashboard = () => {
   // Sample user data (would be fetched from Firebase)
@@ -21,6 +24,23 @@ const YogaDashboard = () => {
       { date: "Feb 28", poses: 10, points: 75 },
     ]
   });
+
+  const [userDeatil,setUserDetail] = useState({})
+ 
+  const {userList} = useFirebase()
+  const {user} = useAuth()
+
+  useEffect(() => {
+    if (user && userList[user?.uid]) {
+      setUserDetail({ ...userList[user.uid] });
+    }
+  }, [user, userList]);
+
+  // Redirect if user not found
+  if (!user || !userList[user?.uid]) {
+    return <Navigate to="/login" />;
+  }
+  
 
   // Sample leaderboard data (would be fetched from Firebase)
   const [leaderboard, setLeaderboard] = useState([
@@ -73,11 +93,17 @@ const YogaDashboard = () => {
     { englishName: "Tree Pose", sanskritName: "Vrikshasana", level: "Beginner", type: "Balance" }
   ]);
 
+  const [asanasView,setAsanasView] = useState(false)
+
   // Function to handle asana difficulty rating
   const handleRatingChange = (rating) => {
     setCurrentAsana({...currentAsana, userRating: rating});
     // In a real app, this would update Firebase
   };
+
+  function toggleAsanas(){
+    setAsanasView(!asanasView)
+  }
 
   // Function to handle logout
   const {logout} = useAuth()
@@ -108,6 +134,9 @@ const YogaDashboard = () => {
 
 
           {/* dashboard section */}
+          {
+            asanasView?<YogaList toggleAsanas={toggleAsanas} />:
+
     <div className="min-h-screen p-6 font-sans text-black flex items-center justify-center">
       <div className="container max-w-6xl mx-auto">
         
@@ -117,11 +146,8 @@ const YogaDashboard = () => {
           {/* Header with User Profile */}
           <div className="flex flex-col md:flex-row justify-between items-center mb-8">
             <div className="flex items-center mb-4 md:mb-0">
-              <div className="h-16 w-16 rounded-full bg-gradient-to-r from-purple-500 to-indigo-600 flex items-center justify-center text-black text-xl font-bold">
-                {userData.name.split(' ').map(n => n[0]).join('')}
-              </div>
               <div className="ml-4">
-                <h1 className="text-2xl font-bold">{userData.name}</h1>
+                <h1 className="text-2xl font-bold">{userDeatil.name}</h1>
                 <div className="flex items-center">
                   <span className="bg-indigo-600/50 px-2 py-1 rounded-md text-xs font-medium">{userData.level}</span>
                   <span className="ml-2 flex items-center"><TrendingUp size={16} className="mr-1" /> {userData.totalPoints} points</span>
@@ -223,8 +249,8 @@ const YogaDashboard = () => {
                           size={20} 
                           className={`cursor-pointer ${star <= currentAsana.userRating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`}
                           onClick={() => handleRatingChange(star)}
-                        />
-                      ))}
+                          />
+                        ))}
                     </div>
                   </div>
                   
@@ -249,7 +275,7 @@ const YogaDashboard = () => {
                       </div>
                     </div>
                   ))}
-                  <button className="w-full mt-2 bg-white/20 hover:bg-white/30 px-3 py-2 rounded-lg text-sm transition-all">
+                  <button onClick={toggleAsanas} className="w-full mt-2 bg-white/20 hover:bg-white/30 px-3 py-2 rounded-lg text-sm transition-all">
                     Browse All Asanas
                   </button>
                 </div>
@@ -324,7 +350,8 @@ const YogaDashboard = () => {
           </div>
         </div>
       </div>
-    </div></>
+   
+    </div> }</>
   );
 };
 
