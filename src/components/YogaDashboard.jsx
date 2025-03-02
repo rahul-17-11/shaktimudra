@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Award, Calendar, TrendingUp, Star, Activity, Users, User } from 'lucide-react';
+import React, { useState } from 'react';
+import { Award, Calendar, TrendingUp, Star, Activity, Users, User, LogOut } from 'lucide-react';
+import { GiMeditation } from 'react-icons/gi';
+import { useAuth } from '../context/AuthProvider';
 
 const YogaDashboard = () => {
   // Sample user data (would be fetched from Firebase)
@@ -77,12 +79,40 @@ const YogaDashboard = () => {
     // In a real app, this would update Firebase
   };
 
+  // Function to handle logout
+  const {logout} = useAuth()
+
   return (
+    <>   
+    {/* Navigation */}
+           <nav className="relative z-10 flex justify-between items-center py-6 px-8 md:px-16 backdrop-blur-sm bg-white/10 border border-white/20 rounded-b-2xl">
+            <div className="flex items-center space-x-2">
+              <div className="h-10 w-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30">
+                <GiMeditation className="h-6 w-6 text-green-900" />
+              </div>
+              <span className="text-xl font-bold text-black drop-shadow-md">ShaktiMudra</span>
+            </div>
+            
+            <div className="hidden md:flex space-x-8 font-medium">
+            </div>
+            
+            <div className="flex space-x-4">
+              <button 
+                className="bg-rose-600/70 hover:bg-rose-700/70 px-4 py-2 rounded-lg shadow-md transition-all flex items-center"
+                onClick={logout}
+              >
+                <LogOut size={16} className="mr-1" /> Logout
+              </button>
+            </div>
+          </nav>
+
+
+          {/* dashboard section */}
     <div className="min-h-screen p-6 font-sans text-black flex items-center justify-center">
       <div className="container max-w-6xl mx-auto">
         
         {/* Main Dashboard Area with Glassmorphism Effect */}
-        <div className="rounded-2xl shadow-xl p-6 border border-white/30">
+        <div className=" rounded-2xl shadow-xl p-6 border border-white/30">
           
           {/* Header with User Profile */}
           <div className="flex flex-col md:flex-row justify-between items-center mb-8">
@@ -294,7 +324,7 @@ const YogaDashboard = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div></>
   );
 };
 
