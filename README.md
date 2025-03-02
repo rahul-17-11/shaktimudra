@@ -5,7 +5,7 @@
 **Yoga Poses App** is a beautifully crafted platform that allows users to explore different yoga asanas, understand their benefits, and improve their practice. Whether you're a beginner or an advanced yogi, this app provides valuable insights into each pose, helping you master yoga with ease.
 
 🔗 **Live Demo**: [Yoga Poses App](https://shaktimudra.netlify.app/)  
-🎥 **Demo Video**: [Watch on Google Drive / YouTube](#) _(Add your actual link here)_
+🎥 **Demo Video**: [Watch on Google Drive / YouTube](#)
 
 ---
 
